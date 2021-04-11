@@ -1,0 +1,16 @@
+key_1
+
+0ec5c956c2f74b279cf52c0706dbe7cf
+
+key_2
+
+e35cc8a253d747a4bd1dc2cce85d5b07
+
+endpoint
+
+https://ucurecognition.cognitiveservices.azure.com/
+
+location
+
+westeurope
+
