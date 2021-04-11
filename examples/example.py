@@ -1,6 +1,6 @@
 '''
 Module that is an example of Microsoft Azure Cognitive Services Api
-to recognize text
+to recognize textсу
 '''
 
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
@@ -127,8 +127,11 @@ def save_text(file_name: str, text: str, output_format: str):
 
 
 if __name__ == '__main__':
+    # insert path to the image here
+    path_to_image = '/Users/shevdan/Documents/Programming/Python/semester2/GroupProject/TextRecognition/examples/images/imagebehindtext.jpeg'
+
     computervision_client = authenticate_cv_client(subscription_key, endpoint)
     text_url = url_image_text_recognition(computervision_client, 'https://easyreaders.org/wp-content/uploads/2017/09/michelangelo600x600.png')
-    save_text('./examples/url_image_recognized_text', text_url,  'docx')
-    text = local_image_text_recognition(computervision_client, './examples/images/imagebehindtext.jpeg')
-    save_text('./examples/local_image_recognized_text', text,  'docx')
+    save_text('url_image_recognized_text', text_url,  'docx')
+    text = local_image_text_recognition(computervision_client, path_to_image)
+    save_text('local_image_recognized_text', text,  'docx')
