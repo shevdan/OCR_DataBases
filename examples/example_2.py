@@ -1,12 +1,22 @@
+'''
+Example of working with json module for parsing json
+files obtained from the api
+'''
+
 import os
 import json
 import requests
+from pprint import pprint
 
 API_KEY = '0ec5c956c2f74b279cf52c0706dbe7cf'
 ENDPOINT = 'https://westeurope.api.cognitive.microsoft.com/vision/v1.0/ocr'
 
 
 def handler(DIR):
+    '''
+    handles all the images from the directory with images and saves
+    recognized text in output.txt
+    '''
     text = ''
     for filename in sorted(os.listdir(DIR)):
         if filename.endswith(".jpeg") or filename.endswith(".jpg") or filename.endswith(".png"): 
@@ -17,6 +27,9 @@ def handler(DIR):
     open('output.txt', 'w').write(text)
 
 def parse_text(results):
+    '''
+    Parses the information from json file
+    '''
     text = ''
     for region in results['regions']:
         for line in region['lines']:
@@ -26,6 +39,9 @@ def parse_text(results):
     return text  
 
 def get_text(pathToImage):
+    '''
+    Accesses API to get json file containing recognized text
+    '''
     print('Processing: ' + pathToImage)
     headers  = {
         'Ocp-Apim-Subscription-Key': API_KEY,
@@ -38,7 +54,8 @@ def get_text(pathToImage):
     payload = open(pathToImage, 'rb').read()
     response = requests.post(ENDPOINT, headers=headers, params=params, data=payload)
     results = json.loads(response.content)
-    print(results)
+    #prints the json from the API
+    pprint(results)
     return results
 
 if __name__ == '__main__':
