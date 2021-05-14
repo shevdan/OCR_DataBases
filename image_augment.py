@@ -1,4 +1,9 @@
 
+'''
+This module is designed to expand the number of images that are intended
+to be fed to ML. This is made by applying random changes to each image.
+'''
+
 import zipfile, shutil, sys
 import os
 from pathlib import Path
@@ -13,14 +18,39 @@ from tensorflow.python.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras import utils
 from sklearn.model_selection import train_test_split
 
-class ImageAugment:
+from data_adt import AbstractAugment
+
+class ImageAugment(AbstractAugment):
+    '''
+    Class is designed to expand the number of images that are intended
+    to be fed to ML. This is made by applying random changes to each image.
+
+    Attributes
+    ----------
+    fullpath: str
+        path to a zip file that contains images which will be multiplied.
+        Currently it is necessary for the file to be an archive
+    temp_drectory: Path
+        Path of the temporary directory where all the files
+        from the archive will be extracted
+
+    Methods
+    -------
+    unzip_files()
+        exctracts the zip file into the temporary directory
+    augment_image(filename, number_mult)
+        applies ImageDataGenerator and generate given number of randomly
+        created images from the base one, which has the filename path
+    process_folder(number_mult, dir_path)
+        recursively walks through all the directories located by the dir_path
+        and applies augment_image to every image
+    zip_files()
+        zips the file and removes the temporary directory
+    '''
     def __init__(self, dir_path: str):
-        if not os.path.exists(dir_path):
-            raise TypeError("Argument must be a valid path")
-        self.fullpath = dir_path
+        AbstractAugment.__init__(self, dir_path)
         zipname = dir_path.split('/')
         zipname = zipname[-1]
-        self.zipname = zipname
         self.temp_directory = Path(f"unzipped-{zipname[:-4]}")
 
     def unzip_files(self):
@@ -37,6 +67,10 @@ class ImageAugment:
             zip.extractall(str(self.temp_directory))
 
     def augment_image(self, filename,  number_mult):
+        '''
+        applies ImageDataGenerator and generate given number of randomly
+        created images from the base one, which has the filename path
+        '''
         # extract the path to the folder 
         folder = '/'.join(filename.split('/')[:-1])
         # read the image into a numpy array
@@ -58,21 +92,20 @@ class ImageAugment:
             pass
 
 
-    def process_zip(self,number_mult, dir_path):
-        '''Iterates over the folders in a zip file and  augments each png file'''
+    def process_folder(self,number_mult, dir_path):
+        '''recursively walks through all the directories located by the dir_path
+        and applies augment_image to every image'''
         for filename in dir_path.iterdir():
             if os.path.isdir(str(filename)):
                 print(f'Processing {str(filename).split("/")[-1]}')
-                self.process_zip(number_mult, Path(str(filename)))
+                self.process_folder(number_mult, Path(str(filename)))
             else:
-                try:
+                if str(str(filename)).endswith(".jpeg") or str(filename).endswith(".jpg") or str(filename).endswith(".png"): 
                     self.augment_image(str(filename), number_mult)
-                except AttributeError:
-                    continue
 
     def zip_files(self):
         '''
-        zips the file and removes the remporary directory
+        zips the file and removes the temporary directory
         '''
         # zipf = zipfile.ZipFile(self.fullpath, 'w', zipfile.ZIP_DEFLATED)
 
@@ -114,11 +147,11 @@ if __name__ == '__main__':
     from pathlib import Path
     augm = ImageAugment('/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/random.zip')
     print(augm.fullpath)
-    print(augm.zipname)
+    # print(augm.zipname)
     print(scipy.__version__)
     augm.unzip_files()
-    augm.process_zip(2, augm.temp_directory)
+    augm.process_folder(2, augm.temp_directory)
     augm.zip_files()
     # augm.augment_image('/Users/shevdan/Documents/Programming/Python/semester2/GroupProject/random/5a2f3c19c27bb.png', 10)
-    # augm.process_zip(2, Path('/Users/shevdan/Documents/Programming/Python/semester2/GroupProject/random'))
+    # augm.process_folder(2, Path('/Users/shevdan/Documents/Programming/Python/semester2/GroupProject/random'))
     # augm.augment_image(None, 2)
