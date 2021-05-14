@@ -5,8 +5,10 @@ import os
 from pathlib import Path
 
 import numpy as np
+from math import sqrt
+from numpy.lib.arraysetops import isin
 import pandas as pd
-from PIL import Image
+from PIL import Image, ImageOps
 from imageio import imread
 import matplotlib.pyplot as plt
 from numpy.lib.type_check import imag
@@ -18,23 +20,49 @@ from sklearn.model_selection import train_test_split
 from data_adt import AbstractAugment
 
 class CSVAugment(AbstractAugment):
-    def __init__(self, dir_path) -> None:
+    def __init__(self, dir_path,im_size=(28,28), output=None) -> None:
         super().__init__(dir_path)
+        direct = '/'.join(dir_path.split('/')[:-1])
+        if output is None:
+            self.output = Path(direct + '/train_images')
+        else:
+            self.output = Path(direct + '/' + output)
+        self.im_size = im_size
+        if not os.path.exists(str(self.output)):
+            self.output.mkdir()
+        
+
 
     def unzip_files(self):
-        pass
+        '''
+        exctracts the zip file into the temporary directory
+        '''
+        try:
+            self.output.mkdir()
+        except FileExistsError:
+            shutil.rmtree(str(self.output))
+            self.output.mkdir()
 
-    def process_folder(self):
-        pass
+        with zipfile.ZipFile(self.fullpath) as zip:
+            zip.extractall(str(self.output))
 
-    def zip_files(self):
-        pass
+    def process_folder(self, dir_path):
+        '''recursively walks through all the directories located by the dir_path
+        and applies augment_image to every image'''
+        if isinstance(dir_path, str):
+            dir_path = Path(dir_path)
+        for filename in dir_path.iterdir():
+            if os.path.isdir(str(filename)):
+                print(f'Processing {str(filename).split("/")[-1]}')
+                self.process_folder(number_mult, Path(str(filename)))
+            else:
+                if os.path.isfile(str(filename)):
+                    self.convert_csv_to_img(str(filename))
+                    pass
+                    # self.augment_image(str(filename), number_mult)
 
-    def create_csv(self, csv_path):
-        df = pd.read_csv(csv_path)
 
-
-    def convert_img_to_csv(self, img_path, df):
+    def convert_csv_to_img(self, filename):
         '''
         Method converts an image into numpy array and adds it to csv file
         with a letter or ciffre on the front of the array as indicator of
@@ -42,33 +70,46 @@ class CSVAugment(AbstractAugment):
         Image must be a single image of hte symbol and to be contained in a
         folder which is called by the name of the symbol
         '''
-        #read the image and convert it into 1d np array
-        image = Image.open(str(img_path)).convert('RGBA')
-        image = image.resize((28, 28), Image.ANTIALIAS)
-        arr = np.array(image)
-        flat_arr = arr.ravel()
+        data = np.loadtxt(filename, skiprows=1, delimiter=',')
+        i = 0
+        for row in data:
+            i+=1
+            symb, pixels = row[0], row[1:]
+            self.pixels_to_img(pixels, symb, i)
+            if i == 10:
+                break
 
-        symb = str(img_path).split('/')[-2]
-    
-        if symb.isdigit():
-            symb = int(symb)
+
+    def pixels_to_img(self, pixels, symb, cnt):
+        if 0 <= symb < 10:
+            symb = str(symb)
         else:
-            symb = ord(symb)
-        print(symb)
-        flat_arr = np.concatenate(([symb], flat_arr))
-        # if not os.path.exists(csv_path):
-        #     np.savetxt(csv_path, flat_arr, delimiter=',')
-        # df = pd.read_csv(csv_path)
+            symb = chr(symb)
+        print(pixels.size)
+        # pixels = pixels.reshape(28, 28)
+        pixels = pixels.reshape(int(sqrt(pixels.size)),int(sqrt(pixels.size)))
+        image = Image.fromarray(pixels)
+        image.resize(self.im_size)
+        image = image.convert("L")
+        image.show()
+        symb_directory = str(self.output) + '/' +  symb
 
-        df = pd.read_csv(df)
-        print(len(list(df)))
+        img_name = f'{symb_directory}/{symb}_{cnt}.png'
+        if not  os.path.isdir(symb_directory):
+            Path(symb_directory).mkdir()
+        image.save(img_name)
 
-        df.append(pd.DataFrame(flat_arr.reshape(1,-1), columns=list(df)), ignore_index=True)
 
-        print(flat_arr)
-        print(type(flat_arr))
+
+    def zip_files(self):
+            # dir_path = self.fullpath[:-4]
+            # root_dir = '/'.join(str(self.temp_directory).split('/')[:-1])
+            # print(dir_path,'\n',  root_dir)
+            shutil.make_archive(str(self.output), 'zip', str(self.output))
+            shutil.rmtree(str(self.temp_directory))
 
 
 if __name__ == '__main__':
     expand = CSVAugment('/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/random')
-    expand.convert_img_to_csv('/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/Cyrillic/Б/5a96bd5286825.png', '/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/train.csv')
+    # expand.convert_img_to_csv('/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/2021-05-14 20.35.49.jpg', '/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/train.csv')
+    expand.process_folder('/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/test')
