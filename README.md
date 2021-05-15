@@ -16,6 +16,8 @@ $ pip install -r requirements.txt
 1. 
 # Usage for Data Bases Extension
 1.
+# Program modules 
+The description of all the program modules you can find [here](https://github.com/shevdan/OCR_DataBases/wiki/Program-modules)
 # Contributing
 
 Pull requests are welcome. \
