@@ -36,6 +36,8 @@ class OCR:
         in the directory
     filename
         string that defines the name of the file that will contain the recognized text
+    api_key
+        Key to Microsoft Azure API. Necessary to use API
     language
         optional parametr defining the text language to be recognized.
         Default value is 'en' for English. Possible values include: 'en', 
@@ -59,12 +61,12 @@ class OCR:
         iterates over each file within a directory, sends requests to the API
         to recognize text, gets the recognized text and saves it into the file.
     '''
-    API_KEY = '0ec5c956c2f74b279cf52c0706dbe7cf'
     ENDPOINT = 'https://westeurope.api.cognitive.microsoft.com/vision/v1.0/ocr'
 
-    def __init__(self, img_directory: str, output_file_name: str, language='en'):
+    def __init__(self, img_directory: str, output_file_name: str, api_key: str,language='en'):
         if not os.path.exists(img_directory):
             raise TypeError('Invalid path to the directory')
+        self.API_KEY = api_key
         self.img_directory = img_directory
         self.filename = output_file_name
         self.language = language
