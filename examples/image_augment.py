@@ -89,36 +89,24 @@ class ImageAugment(AbstractAugment):
             number_mult)):  # here we define a range because we want 10 augmented images otherwise it will keep looping forever I think
             pass
 
-<<<<<<< HEAD:examples/image_augment.py
 
     def process_folder(self,number_mult, dir_path):
         '''recursively walks through all the directories located by the dir_path
         and applies augment_image to every image'''
         if isinstance(dir_path, str):
             dir_path = Path(dir_path)
-=======
-    def process_folder(self, number_mult, dir_path):
-        """recursively walks through all the directories located by the dir_path
-        and applies augment_image to every image"""
->>>>>>> ef0bb6355059561534f6f4d9152b035a435f5748:image_augment.py
         for filename in dir_path.iterdir():
             if os.path.isdir(str(filename)):
                 # print(f'Processing {str(filename).split("/")[-1]}')
                 self.process_folder(number_mult, Path(str(filename)))
             else:
-<<<<<<< HEAD:examples/image_augment.py
                 if str(filename).endswith(".jpeg") or str(filename).endswith(".jpg") or str(filename).endswith(".png"): 
-=======
-                if str(str(filename)).endswith(".jpeg") or str(filename).endswith(".jpg") or str(filename).endswith(
-                        ".png"):
->>>>>>> ef0bb6355059561534f6f4d9152b035a435f5748:image_augment.py
                     self.augment_image(str(filename), number_mult)
 
     def zip_files(self):
         """
         zips the file and removes the temporary directory
-<<<<<<< HEAD:examples/image_augment.py
-        '''
+        """
         dir_path = self.fullpath[:-4]
 
         shutil.make_archive(dir_path, 'zip', str(self.temp_directory))
@@ -129,12 +117,3 @@ class ImageAugment(AbstractAugment):
         self.unzip_files()
         self.process_folder(number_mult, self.temp_directory)
         self.zip_files()
-=======
-        """
-        dir_path = self.fullpath[:-4]
-        root_dir = '/'.join(str(self.temp_directory).split('/')[:-1])
-        print(dir_path, '\n', root_dir)
-        shutil.make_archive(dir_path, 'zip', str(self.temp_directory))
-
-        shutil.rmtree(str(self.temp_directory))
->>>>>>> ef0bb6355059561534f6f4d9152b035a435f5748:image_augment.py

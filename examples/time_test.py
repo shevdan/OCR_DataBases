@@ -37,7 +37,6 @@ def test_convert(path_small_csv, path_big_csv):
     print(f'CSVConvert takes {round(time_2, 3)} seconds to convert csv file containing ~40000 images into images.')
 
 if __name__ == '__main__':
-    # test_time_augment('/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/I.zip')
     path_small = 'INSERT YOUR PATH TO CSV ARCHIVE HERE'
     path_big = 'INSERT YOUR PATH TO CSV ARCHIVE HERE'
     path_imgs = 'INSERT YOUR PATH TO IMAGES ARCHIVE HERE'
