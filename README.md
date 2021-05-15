@@ -3,7 +3,8 @@
 
 # Table of Contents
 * [Installation](https://github.com/shevdan/OCR_DataBases#installation)
-* [Usage](https://github.com/shevdan/OCR_DataBases#usage)
+* [Usage for Text Recognition]()
+* [Usage for Data Bases Extension]()
 * [Contributing](https://github.com/shevdan/OCR_DataBases#contributing)
 * [Credits](https://github.com/shevdan/OCR_DataBases#credits)
 * [License](https://github.com/shevdan/OCR_DataBases#license)
@@ -11,8 +12,10 @@
 $ git clone https://github.com/shevdan/OCR_DataBases.git \
 $ cd OCR_DataBases \
 $ pip install -r requirements.txt
-# Usage
-
+# Usage for Text Recognition
+1. 
+# Usage for Data Bases Extension
+1.
 # Contributing
 
 Pull requests are welcome. \
