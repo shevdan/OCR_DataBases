@@ -1,17 +1,18 @@
-
-'''
+"""
 Module that implements ADT for operating with files and
 expanding data needed for ML
-'''
+"""
 
 import os
 import abc
 
+
 class AbstractAugment(metaclass=abc.ABCMeta):
-    '''
+    """
     ADT for operating with files and expanding data
     needed for ML
-    '''
+    """
+
     def __init__(self, dir_path: str):
         if not os.path.exists(dir_path):
             raise TypeError("Argument must be a valid path")
