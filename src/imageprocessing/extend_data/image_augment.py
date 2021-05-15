@@ -12,7 +12,6 @@ import numpy as np
 from PIL import Image
 from imageio import imread
 from tensorflow.python.keras.preprocessing.image import ImageDataGenerator
-from sklearn.model_selection import train_test_split
 
 from data_adt import AbstractAugment
 
@@ -91,9 +90,11 @@ class ImageAugment(AbstractAugment):
     def process_folder(self,number_mult, dir_path):
         '''recursively walks through all the directories located by the dir_path
         and applies augment_image to every image'''
+        if isinstance(dir_path, str):
+            dir_path = Path(dir_path)
         for filename in dir_path.iterdir():
             if os.path.isdir(str(filename)):
-                print(f'Processing {str(filename).split("/")[-1]}')
+                # print(f'Processing {str(filename).split("/")[-1]}')
                 self.process_folder(number_mult, Path(str(filename)))
             else:
                 if str(filename).endswith(".jpeg") or str(filename).endswith(".jpg") or str(filename).endswith(".png"): 
@@ -109,14 +110,7 @@ class ImageAugment(AbstractAugment):
 
         shutil.rmtree(str(self.temp_directory))
 
-    
-if __name__ == '__main__':
-
-    augm = ImageAugment('/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/random.zip')
-
-    augm.unzip_files()
-    augm.process_folder(2, augm.temp_directory)
-    augm.zip_files()
-    # augm.augment_image('/Users/shevdan/Documents/Programming/Python/semester2/GroupProject/random/5a2f3c19c27bb.png', 10)
-    # augm.process_folder(2, Path('/Users/shevdan/Documents/Programming/Python/semester2/GroupProject/random'))
-    # augm.augment_image(None, 2)
+    def extend(self, number_mult):
+        self.unzip_files()
+        self.process_folder(number_mult, self.temp_directory)
+        self.zip_files()

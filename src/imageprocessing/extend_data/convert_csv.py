@@ -14,7 +14,7 @@ from PIL import Image, ImageOps
 
 from data_adt import AbstractAugment
 
-class CSVAugment(AbstractAugment):
+class CSVConvert(AbstractAugment):
     '''
     Class that enables processing csv files
     that contain images to be converted to images
@@ -55,7 +55,7 @@ class CSVAugment(AbstractAugment):
     convert()
         Method that processes the archive containing csv,
         processes images in there and archives foler with images
-    
+
     '''
     def __init__(self, fullpath, im_size=(28,28), output='train_images') -> None:
         super().__init__(fullpath)
@@ -93,7 +93,6 @@ class CSVAugment(AbstractAugment):
             else:
                 if os.path.isfile(str(filename)):
                     self.convert_csv_to_img(str(filename))
-                    # self.augment_image(str(filename), number_mult)
 
 
     def convert_csv_to_img(self, filename):
@@ -111,8 +110,6 @@ class CSVAugment(AbstractAugment):
             counter += 1
             symb, pixels = row[0], row[1:]
             self.pixels_to_img(pixels, symb, counter)
-            if counter == 10:
-                break
 
 
 
@@ -158,11 +155,3 @@ class CSVAugment(AbstractAugment):
         self.unzip_files()
         self.process_folder(self.unzipped)
         self.zip_files()
-
-
-if __name__ == '__main__':
-    expand = CSVAugment('/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/train.csv.zip')
-    # expand.convert_img_to_csv('/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/2021-05-14 20.35.49.jpg', '/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/train.csv')
-    # expand.process_folder('/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/test')
-    expand.convert()
-    # expand.unzip_files()
