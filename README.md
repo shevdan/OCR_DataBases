@@ -13,9 +13,16 @@ $ git clone https://github.com/shevdan/OCR_DataBases.git \
 $ cd OCR_DataBases \
 $ pip install -r requirements.txt
 # Usage for Text Recognition
-1. 
+To use our text recognition you have to:
+1. install the distributive 
+2. in module ocr_azure.py create an object of OCR() class with 2 attributes: 
+   * the path to the folder with your images
+   * the name of the file you want the text to be in
 # Usage for Data Bases Extension
-1.
+To receive the extension of your database you have to:
+1. install the distributive 
+2. in module image_augment.py create an object of ImageAugment() class with 1 attribute:
+   * the path to the zipfile with your database.
 # Program modules 
 The description of all the program modules you can find [here](https://github.com/shevdan/OCR_DataBases/wiki/Program-modules).
 # Contributing
