@@ -3,6 +3,10 @@
 
 # Table of Contents
 * [Installation](https://github.com/shevdan/OCR_DataBases#installation)
+* [Usage](https://github.com/shevdan/OCR_DataBases#usage)
+* [Contributing](https://github.com/shevdan/OCR_DataBases#contributing)
+* [Credits](https://github.com/shevdan/OCR_DataBases#credits)
+* [License](https://github.com/shevdan/OCR_DataBases#license)
 # Installation
 $ git clone https://github.com/shevdan/OCR_DataBases.git \
 $ cd OCR_DataBases \
