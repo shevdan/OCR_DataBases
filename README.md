@@ -4,7 +4,7 @@
 # Table of Contents
 # Installation
 $ git clone https://github.com/shevdan/OCR_DataBases.git \
-$ cd homeworks_project \
+$ cd OCR_DataBases \
 $ pip install -r requirements.txt
 # Usage
 
