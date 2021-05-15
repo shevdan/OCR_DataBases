@@ -2,6 +2,7 @@
 # Description
 
 # Table of Contents
+* [Installation](https://github.com/shevdan/OCR_DataBases#installation)
 # Installation
 $ git clone https://github.com/shevdan/OCR_DataBases.git \
 $ cd OCR_DataBases \
