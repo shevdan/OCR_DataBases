@@ -13,7 +13,7 @@ $ pip install -r requirements.txt
 Pull requests are welcome. \
 For major changes, please open an issue first to discuss what you would like to change.
 
-To make create a pull request:
+To create a pull request:
 
 * Fork this repository on GitHub 
 * Clone the project to your computer 
