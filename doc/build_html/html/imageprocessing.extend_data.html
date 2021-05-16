@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>imageprocessing.extend_data package &#8212; OCR_DataBases 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="imageprocessing.text_recognition package" href="imageprocessing.text_recognition.html" />
+    <link rel="prev" title="imageprocessing package" href="imageprocessing.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="imageprocessing.text_recognition.html" title="imageprocessing.text_recognition package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="imageprocessing.html" title="imageprocessing package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">OCR_DataBases 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="imageprocessing.html" accesskey="U">imageprocessing package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">imageprocessing.extend_data package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="imageprocessing-extend-data-package">
+<h1>imageprocessing.extend_data package<a class="headerlink" href="#imageprocessing-extend-data-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-imageprocessing.extend_data.convert_csv">
+<span id="imageprocessing-extend-data-convert-csv-module"></span><h2>imageprocessing.extend_data.convert_csv module<a class="headerlink" href="#module-imageprocessing.extend_data.convert_csv" title="Permalink to this headline">¶</a></h2>
+<p>Module that enables processing csv files
+that contain images to be converted to images</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.convert_csv.CSVConvert">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imageprocessing.extend_data.convert_csv.</span></span><span class="sig-name descname"><span class="pre">CSVConvert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fullpath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(28,</span> <span class="pre">28)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train_images'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.convert_csv.CSVConvert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#imageprocessing.extend_data.data_adt.AbstractAugment" title="imageprocessing.extend_data.data_adt.AbstractAugment"><code class="xref py py-class docutils literal notranslate"><span class="pre">imageprocessing.extend_data.data_adt.AbstractAugment</span></code></a></p>
+<p>Class that enables processing csv files
+that contain images to be converted to images
+CSV file must be archived in order to process it</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.convert_csv.CSVConvert.fullpath">
+<span class="sig-name descname"><span class="pre">fullpath</span></span><a class="headerlink" href="#imageprocessing.extend_data.convert_csv.CSVConvert.fullpath" title="Permalink to this definition">¶</a></dt>
+<dd><p>path to the archive containing csv files
+! Note ! Correct output will be proceeded for csv file that
+contains an image unicode character at the first column
+and pixels for the rest of columns</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>str</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.convert_csv.CSVConvert.im_size">
+<span class="sig-name descname"><span class="pre">im_size</span></span><a class="headerlink" href="#imageprocessing.extend_data.convert_csv.CSVConvert.im_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>tuple that contains size of the image that will be saved.
+Default value is 28x28 size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>tuple</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.convert_csv.CSVConvert.output">
+<span class="sig-name descname"><span class="pre">output</span></span><a class="headerlink" href="#imageprocessing.extend_data.convert_csv.CSVConvert.output" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the archive with images that will be created in the same
+directory as csv archive. Default value is train_images</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>str</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.convert_csv.CSVConvert.unzip_files">
+<span class="sig-name descname"><span class="pre">unzip_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.convert_csv.CSVConvert.unzip_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>exctracts the zip file into the temporary directory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.convert_csv.CSVConvert.process_files">
+<span class="sig-name descname"><span class="pre">process_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.convert_csv.CSVConvert.process_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>recursively walks through all the directories located by the dir_path
+and converts each array containing image in csv into an image</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.convert_csv.CSVConvert.convert_csv_to_image">
+<span class="sig-name descname"><span class="pre">convert_csv_to_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.convert_csv.CSVConvert.convert_csv_to_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method converts a numpy array into an image and
+saves it into the folder named by the symbol
+of the image in a output_file directory.
+! Note ! Correct output will be proceeded for csv file that
+contains an image unicode character at the first column
+and pixels of the square image for the rest of columns</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.convert_csv.CSVConvert.pixels_to_img">
+<span class="sig-name descname"><span class="pre">pixels_to_img</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pixels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cnt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.convert_csv.CSVConvert.pixels_to_img" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts one numpy array into an image and saves it into
+the folder named by the symbol
+of the image in a output_file directory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.convert_csv.CSVConvert.convert">
+<span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.convert_csv.CSVConvert.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that processes the archive containing csv,
+processes images in there and archives foler with images</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that processes the archive containing csv,
+processes images in there and archives foler with images</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.convert_csv.CSVConvert.convert_csv_to_img">
+<span class="sig-name descname"><span class="pre">convert_csv_to_img</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.convert_csv.CSVConvert.convert_csv_to_img" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method converts a numpy array into an image and
+saves it into the folder named by the symbol
+of the image in a output_file directory.
+! Note ! Correct output will be proceeded for csv file that
+contains an image unicode character at the first column
+and pixels of the square image for the rest of columns</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<cite>str</cite>) – path to the csv file to be converted into the folder with images</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">pixels_to_img</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pixels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symb</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cnt</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts one numpy array into an image and saves it into
+the folder named by the symbol
+of the image in a output_file directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pixels</strong> (<cite>np.ndarray</cite>) – 1-dimensional numpy array containing pixels of an image</p></li>
+<li><p><strong>symb</strong> (<cite>str</cite>) – symbol of the image</p></li>
+<li><p><strong>cnt</strong> (<cite>int</cite>) – counter of the image in order for image to be named properly</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.convert_csv.CSVConvert.process_folder">
+<span class="sig-name descname"><span class="pre">process_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.convert_csv.CSVConvert.process_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>recursively walks through all the directories located by the dir_path
+and converts each array containing image in csv into an image</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">unzip_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>exctracts the zip file into the temporary directory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.convert_csv.CSVConvert.zip_files">
+<span class="sig-name descname"><span class="pre">zip_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.convert_csv.CSVConvert.zip_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>zips the file and removes the temporary directory</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-imageprocessing.extend_data.data_adt">
+<span id="imageprocessing-extend-data-data-adt-module"></span><h2>imageprocessing.extend_data.data_adt module<a class="headerlink" href="#module-imageprocessing.extend_data.data_adt" title="Permalink to this headline">¶</a></h2>
+<p>Module that implements ADT for operating with files and
+expanding data needed for ML</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.data_adt.AbstractAugment">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imageprocessing.extend_data.data_adt.</span></span><span class="sig-name descname"><span class="pre">AbstractAugment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.data_adt.AbstractAugment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ADT for operating with files and expanding data
+needed for ML</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.data_adt.AbstractAugment.process_folder">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">process_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_mult</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.data_adt.AbstractAugment.process_folder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.data_adt.AbstractAugment.unzip_files">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">unzip_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.data_adt.AbstractAugment.unzip_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.data_adt.AbstractAugment.zip_files">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">zip_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.data_adt.AbstractAugment.zip_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-imageprocessing.extend_data.image_augment">
+<span id="imageprocessing-extend-data-image-augment-module"></span><h2>imageprocessing.extend_data.image_augment module<a class="headerlink" href="#module-imageprocessing.extend_data.image_augment" title="Permalink to this headline">¶</a></h2>
+<p>This module is designed to expand the number of images that are intended
+to be fed to ML. This is made by applying random changes to each image.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.image_augment.ImageAugment">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imageprocessing.extend_data.image_augment.</span></span><span class="sig-name descname"><span class="pre">ImageAugment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.image_augment.ImageAugment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#imageprocessing.extend_data.data_adt.AbstractAugment" title="imageprocessing.extend_data.data_adt.AbstractAugment"><code class="xref py py-class docutils literal notranslate"><span class="pre">imageprocessing.extend_data.data_adt.AbstractAugment</span></code></a></p>
+<p>Class is designed to expand the number of images that are intended
+to be fed to ML. This is made by applying random changes to each image.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.image_augment.ImageAugment.fullpath">
+<span class="sig-name descname"><span class="pre">fullpath</span></span><a class="headerlink" href="#imageprocessing.extend_data.image_augment.ImageAugment.fullpath" title="Permalink to this definition">¶</a></dt>
+<dd><p>path to a zip file that contains images which will be multiplied.
+Currently it is necessary for the file to be an archive</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>str</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.image_augment.ImageAugment.temp_drectory">
+<span class="sig-name descname"><span class="pre">temp_drectory</span></span><a class="headerlink" href="#imageprocessing.extend_data.image_augment.ImageAugment.temp_drectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path of the temporary directory where all the files
+from the archive will be extracted</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>Path</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.image_augment.ImageAugment.unzip_files">
+<span class="sig-name descname"><span class="pre">unzip_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.image_augment.ImageAugment.unzip_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>exctracts the zip file into the temporary directory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.image_augment.ImageAugment.augment_image">
+<span class="sig-name descname"><span class="pre">augment_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_mult</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.image_augment.ImageAugment.augment_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>applies ImageDataGenerator and generate given number of randomly
+created images from the base one, which has the filename path</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.image_augment.ImageAugment.process_folder">
+<span class="sig-name descname"><span class="pre">process_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_mult</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.image_augment.ImageAugment.process_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>recursively walks through all the directories located by the dir_path
+and applies augment_image to every image</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.image_augment.ImageAugment.zip_files">
+<span class="sig-name descname"><span class="pre">zip_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.image_augment.ImageAugment.zip_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>zips the file and removes the temporary directory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">augment_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_mult</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>applies ImageDataGenerator and generate given number of randomly
+created images from the base one, which has the filename path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<cite>str</cite>) – path to the image that is being taken as a base for generation</p></li>
+<li><p><strong>number_mult</strong> (<cite>int</cite>) – number of generated images per image</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.extend_data.image_augment.ImageAugment.extend">
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_mult</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.extend_data.image_augment.ImageAugment.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that enables to go through all the steps
+to unzip, extend and zip back images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>number_mult</strong> (<cite>int</cite>) – number of generated images per image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">process_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number_mult</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd><p>recursively walks through all the directories located by the dir_path
+and applies augment_image to every image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number_mult</strong> (<cite>int</cite>) – number of generated images per image</p></li>
+<li><p><strong>dir_path</strong> (Union[<cite>str</cite>, <cite>Path</cite>]) – path to the folder to operate</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">unzip_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd><p>exctracts the zip file into the temporary directory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">zip_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd><p>zips the file and removes the temporary directory</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-imageprocessing.extend_data">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-imageprocessing.extend_data" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">imageprocessing.extend_data package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-imageprocessing.extend_data.convert_csv">imageprocessing.extend_data.convert_csv module</a></li>
+<li><a class="reference internal" href="#module-imageprocessing.extend_data.data_adt">imageprocessing.extend_data.data_adt module</a></li>
+<li><a class="reference internal" href="#module-imageprocessing.extend_data.image_augment">imageprocessing.extend_data.image_augment module</a></li>
+<li><a class="reference internal" href="#module-imageprocessing.extend_data">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="imageprocessing.html"
+                        title="previous chapter">imageprocessing package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="imageprocessing.text_recognition.html"
+                        title="next chapter">imageprocessing.text_recognition package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/imageprocessing.extend_data.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="imageprocessing.text_recognition.html" title="imageprocessing.text_recognition package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="imageprocessing.html" title="imageprocessing package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">OCR_DataBases 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="imageprocessing.html" >imageprocessing package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">imageprocessing.extend_data package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Bohdan Shevchuk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
+    </div>
+  </body>
+</html>
