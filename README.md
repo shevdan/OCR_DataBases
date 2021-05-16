@@ -1,6 +1,6 @@
 # OCR DataBases
 # Description
-
+[Homework Tasks](https://github.com/shevdan/OCR_DataBases/wiki)
 # Table of Contents
 * [Installation](https://github.com/shevdan/OCR_DataBases#installation)
 * [Usage for Text Recognition](https://github.com/shevdan/OCR_DataBases#usage-for-text-recognition)
