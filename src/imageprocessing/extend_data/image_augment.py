@@ -5,7 +5,7 @@ to be fed to ML. This is made by applying random changes to each image.
 '''
 
 import zipfile, shutil, sys
-import os
+import sys,os
 from pathlib import Path
 
 import numpy as np
@@ -13,7 +13,8 @@ from PIL import Image
 from imageio import imread
 from tensorflow.python.keras.preprocessing.image import ImageDataGenerator
 
-from data_adt import AbstractAugment
+
+from .data_adt import AbstractAugment
 
 class ImageAugment(AbstractAugment):
     '''
@@ -22,10 +23,10 @@ class ImageAugment(AbstractAugment):
 
     Attributes
     ----------
-    fullpath: str
+    fullpath: `str`
         path to a zip file that contains images which will be multiplied.
         Currently it is necessary for the file to be an archive
-    temp_drectory: Path
+    temp_drectory: `Path`
         Path of the temporary directory where all the files
         from the archive will be extracted
 
@@ -61,10 +62,17 @@ class ImageAugment(AbstractAugment):
         with zipfile.ZipFile(self.fullpath) as zip:
             zip.extractall(str(self.temp_directory))
 
-    def augment_image(self, filename,  number_mult):
+    def augment_image(self, filename: str,  number_mult: int):
         '''
         applies ImageDataGenerator and generate given number of randomly
         created images from the base one, which has the filename path
+    
+        Parameters
+        ----------
+        filename: `str`
+            path to the image that is being taken as a base for generation
+        number_mult: `int`
+            number of generated images per image
         '''
         # extract the path to the folder 
         folder = '/'.join(filename.split('/')[:-1])
@@ -87,14 +95,21 @@ class ImageAugment(AbstractAugment):
             pass
 
 
-    def process_folder(self,number_mult, dir_path):
+    def process_folder(self,number_mult: int, dir_path):
         '''recursively walks through all the directories located by the dir_path
-        and applies augment_image to every image'''
+        and applies augment_image to every image
+
+        Parameters
+        ----------
+        number_mult: `int`
+            number of generated images per image
+        dir_path: Union[`str`, `Path`]
+            path to the folder to operate
+        '''
         if isinstance(dir_path, str):
             dir_path = Path(dir_path)
         for filename in dir_path.iterdir():
             if os.path.isdir(str(filename)):
-                # print(f'Processing {str(filename).split("/")[-1]}')
                 self.process_folder(number_mult, Path(str(filename)))
             else:
                 if str(filename).endswith(".jpeg") or str(filename).endswith(".jpg") or str(filename).endswith(".png"): 
@@ -111,6 +126,15 @@ class ImageAugment(AbstractAugment):
         shutil.rmtree(str(self.temp_directory))
 
     def extend(self, number_mult):
+        '''
+        Method that enables to go through all the steps
+        to unzip, extend and zip back images.
+    
+        Parameters
+        ----------
+        number_mult: `int`
+            number of generated images per image
+        '''
         self.unzip_files()
         self.process_folder(number_mult, self.temp_directory)
         self.zip_files()

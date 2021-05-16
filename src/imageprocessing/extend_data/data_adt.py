@@ -4,7 +4,7 @@ Module that implements ADT for operating with files and
 expanding data needed for ML
 '''
 
-import os
+import sys, os
 import abc
 
 class AbstractAugment(metaclass=abc.ABCMeta):
@@ -19,12 +19,12 @@ class AbstractAugment(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def unzip_files(self):
-        pass
+        raise NotImplementedError
 
     @abc.abstractmethod
     def process_folder(self, number_mult, dir_path):
-        pass
+        raise NotImplementedError
 
     @abc.abstractmethod
     def zip_files(self):
-        pass
+        raise NotImplementedError
