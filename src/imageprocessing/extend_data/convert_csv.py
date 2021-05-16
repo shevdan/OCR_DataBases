@@ -1,8 +1,7 @@
-'''
+"""
 Module that enables processing csv files
 that contain images to be converted to images
-'''
-
+"""
 
 import zipfile, shutil, sys
 import sys,os
@@ -18,8 +17,9 @@ from .data_adt import AbstractAugment
 
 
 
+
 class CSVConvert(AbstractAugment):
-    '''
+    """
     Class that enables processing csv files
     that contain images to be converted to images
     CSV file must be archived in order to process it
@@ -60,8 +60,14 @@ class CSVConvert(AbstractAugment):
         Method that processes the archive containing csv,
         processes images in there and archives foler with images
 
+<<<<<<< HEAD
     '''
     def __init__(self, fullpath: str, im_size=(28,28), output='train_images') -> None:
+=======
+    """
+
+    def __init__(self, fullpath, im_size=(28, 28), output='train_images') -> None:
+>>>>>>> 46a9c86096a546e1ef3928aa17a4177c2a07b194
         super().__init__(fullpath)
         dir_path = '/'.join(fullpath.split('/')[:-1])
         self.output = Path(f'{dir_path}/{output}')
@@ -69,13 +75,11 @@ class CSVConvert(AbstractAugment):
         self.unzipped = Path(f'{dir_path}/unzipped')
         if not os.path.exists(str(self.output)):
             self.output.mkdir()
-        
-
 
     def unzip_files(self):
-        '''
+        """
         exctracts the zip file into the temporary directory
-        '''
+        """
         try:
             self.unzipped.mkdir()
         except FileExistsError:
@@ -86,8 +90,8 @@ class CSVConvert(AbstractAugment):
             zip.extractall(str(self.unzipped))
 
     def process_folder(self, dir_path):
-        '''recursively walks through all the directories located by the dir_path
-        and converts each array containing image in csv into an image'''
+        """recursively walks through all the directories located by the dir_path
+        and converts each array containing image in csv into an image"""
         if isinstance(dir_path, str):
             dir_path = Path(dir_path)
         for filename in dir_path.iterdir():
@@ -98,21 +102,30 @@ class CSVConvert(AbstractAugment):
                 if os.path.isfile(str(filename)):
                     self.convert_csv_to_img(str(filename))
 
+<<<<<<< HEAD
 
     def convert_csv_to_img(self, filename: str):
         '''
+=======
+    def convert_csv_to_img(self, filename):
+        """
+>>>>>>> 46a9c86096a546e1ef3928aa17a4177c2a07b194
         Method converts a numpy array into an image and
         saves it into the folder named by the symbol
         of the image in a output_file directory.
         ! Note ! Correct output will be proceeded for csv file that
         contains an image unicode character at the first column
         and pixels of the square image for the rest of columns
+<<<<<<< HEAD
     
         Parameters
         ----------
         filename: `str`
             path to the csv file to be converted into the folder with images
         '''
+=======
+        """
+>>>>>>> 46a9c86096a546e1ef3928aa17a4177c2a07b194
         data = np.loadtxt(filename, skiprows=1, delimiter=',')
         counter = 0
         for row in data:
@@ -120,6 +133,7 @@ class CSVConvert(AbstractAugment):
             symb, pixels = row[0], row[1:]
             self.pixels_to_img(pixels, symb, counter)
 
+<<<<<<< HEAD
 
 
     def pixels_to_img(self, pixels: np.ndarray, symb: str, cnt: int):
@@ -137,13 +151,20 @@ class CSVConvert(AbstractAugment):
         cnt: `int`
             counter of the image in order for image to be named properly
         '''
+=======
+    def pixels_to_img(self, pixels, symb, cnt):
+        """
+        converts one numpy array into an image and saves it into
+        the folder named by the symbol
+        of the image in a output_file directory
+        """
+>>>>>>> 46a9c86096a546e1ef3928aa17a4177c2a07b194
         if 0 <= symb < 10:
             symb = str(symb)
         else:
             symb = chr(symb)
 
-
-        pixels = pixels.reshape(int(sqrt(pixels.size)),int(sqrt(pixels.size)))
+        pixels = pixels.reshape(int(sqrt(pixels.size)), int(sqrt(pixels.size)))
         image = Image.fromarray(pixels)
         image.resize(self.im_size)
         image = image.convert("L")
@@ -151,25 +172,23 @@ class CSVConvert(AbstractAugment):
         symb_directory = f'{str(self.output)}/{symb}'
 
         img_name = f'{symb_directory}/{symb}_{cnt}.png'
-        if not  os.path.isdir(symb_directory):
+        if not os.path.isdir(symb_directory):
             Path(symb_directory).mkdir()
         image.save(img_name)
 
-
-
     def zip_files(self):
-        '''
+        """
         zips the file and removes the temporary directory
-        '''
+        """
         shutil.make_archive(str(self.output), 'zip', str(self.output))
         shutil.rmtree(str(self.unzipped))
         shutil.rmtree(str(self.output))
 
     def convert(self):
-        '''
+        """
         Method that processes the archive containing csv,
         processes images in there and archives foler with images
-        '''
+        """
         self.unzip_files()
         self.process_folder(self.unzipped)
         self.zip_files()

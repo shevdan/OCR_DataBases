@@ -1,4 +1,3 @@
-
 '''
 Module implementing test ADT to use Microsoft Azure API
 '''
@@ -7,6 +6,7 @@ import os
 import json
 from typing import Type, Optional
 import requests
+
 
 class ImageInfo:
     '''
@@ -19,7 +19,7 @@ class ImageInfo:
 
 
 class OCR:
-    '''
+    """
     ADT that enables text recognition of any amount of images stored in one directory.
     Takes path to the directory with stored images, name of the file to store the
     recognized text and optionally language of the recognition when created the instance of the ADT
@@ -39,9 +39,15 @@ class OCR:
         string that defines the name of the file that will contain the recognized text
     api_key: `str`
         Key to Microsoft Azure API. Necessary to use API
+<<<<<<< HEAD
     language: Optional[`str`]
         optional parameter defining the text language to be recognized.
         Default value is 'en' for English. Possible values include: 'en', 
+=======
+    language
+        optional parametr defining the text language to be recognized.
+        Default value is 'en' for English. Possible values include: 'en',
+>>>>>>> 46a9c86096a546e1ef3928aa17a4177c2a07b194
         'es', 'fr', 'de', 'it', 'nl', 'pt'. Azure OCR v. 3.2 is awaited to
         be implemented in the code to support over 70 languages in near future.
     headers: `dict`
@@ -61,21 +67,25 @@ class OCR:
     handler()
         iterates over each file within a directory, sends requests to the API
         to recognize text, gets the recognized text and saves it into the file.
-    '''
+    """
     ENDPOINT = 'https://westeurope.api.cognitive.microsoft.com/vision/v1.0/ocr'
 
+<<<<<<< HEAD
     def __init__(self, img_directory: str, output_file_name: str, api_key: str,language:Optional[str]='en'):
+=======
+    def __init__(self, img_directory: str, output_file_name: str, api_key: str, language='en'):
+>>>>>>> 46a9c86096a546e1ef3928aa17a4177c2a07b194
         if not os.path.exists(img_directory):
             raise TypeError('Invalid path to the directory')
         self.API_KEY = api_key
         self.img_directory = img_directory
         self.filename = output_file_name
         self.language = language
-        self.headers  = {
+        self.headers = {
             'Ocp-Apim-Subscription-Key': self.API_KEY,
             'Content-Type': 'application/octet-stream'
         }
-        self.params   = {
+        self.params = {
             'language': self.language,
             'detectOrientation ': 'true'
         }
@@ -121,16 +131,16 @@ class OCR:
                 for word in line['words']:
                     text += word['text'] + ' '
                 text += '\n'
-        return text  
+        return text
 
     def handler(self):
-        '''
+        """
         handles all the images from the directory with images and saves
         recognized text in output.txt
-        '''
+        """
         text = ''
         for filename in sorted(os.listdir(self.img_directory)):
-            if filename.endswith(".jpeg") or filename.endswith(".jpg") or filename.endswith(".png"): 
+            if filename.endswith(".jpeg") or filename.endswith(".jpg") or filename.endswith(".png"):
                 pathToImage = f'{self.img_directory}/{filename}'
                 results = self.get_text(pathToImage)
                 text += self.parse_text(results)

@@ -89,8 +89,7 @@ class ImageAugment(AbstractAugment):
             number_mult)):  # here we define a range because we want 10 augmented images otherwise it will keep looping forever I think
             pass
 
-
-    def process_folder(self,number_mult, dir_path):
+    def process_folder(self, number_mult, dir_path):
         '''recursively walks through all the directories located by the dir_path
         and applies augment_image to every image'''
         if isinstance(dir_path, str):
@@ -100,7 +99,7 @@ class ImageAugment(AbstractAugment):
                 # print(f'Processing {str(filename).split("/")[-1]}')
                 self.process_folder(number_mult, Path(str(filename)))
             else:
-                if str(filename).endswith(".jpeg") or str(filename).endswith(".jpg") or str(filename).endswith(".png"): 
+                if str(filename).endswith(".jpeg") or str(filename).endswith(".jpg") or str(filename).endswith(".png"):
                     self.augment_image(str(filename), number_mult)
 
     def zip_files(self):

@@ -1,7 +1,7 @@
-'''
+"""
 Module that is an example of Microsoft Azure Cognitive Services Api
 to recognize text
-'''
+"""
 
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
@@ -26,25 +26,26 @@ computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredenti
 
 
 def authenticate_cv_client(subscription_key: str, endpoint: str):
-    '''
+    """
     Authenticate
     Authenticates your credentials and creates a client.
-    '''
+    """
     return ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
 
+
 def local_image_text_recognition(computervision_client, image_path: str, language='en'):
-    '''
+    """
     Text recognition from a image stored locally.
     Supported languages - Currently, only English ('en'), Dutch (‘nl’),
     French (‘fr’), German (‘de’), Italian (‘it’), Portuguese (‘pt),
-    and Spanish ('es') are supported. Read supports auto language 
+    and Spanish ('es') are supported. Read supports auto language
     identification and multi-language documents, so only provide a l
-    anguage code if you would like to force the documented to be 
-    processed as that specific language. Possible values include: 'en', 
+    anguage code if you would like to force the documented to be
+    processed as that specific language. Possible values include: 'en',
     'es', 'fr', 'de', 'it', 'nl', 'pt'
     Default value is 'en'
     Supports handwritten text recognition in english only
-    '''
+    """
     # Transform the image into the bytes array
     image = open(image_path, 'rb')
     # Call API with URL and raw response (allows you to get the operation location)
@@ -76,27 +77,25 @@ def local_image_text_recognition(computervision_client, image_path: str, languag
 
 
 def url_image_text_recognition(computervision_client, image_url: str, language='en'):
-    '''
+    """
     Text recognition from a image url.
     Supported languages - Currently, only English ('en'), Dutch (‘nl’),
     French (‘fr’), German (‘de’), Italian (‘it’), Portuguese (‘pt),
-    and Spanish ('es') are supported. Read supports auto language 
+    and Spanish ('es') are supported. Read supports auto language
     identification and multi-language documents, so only provide a l
-    anguage code if you would like to force the documented to be 
-    processed as that specific language. Possible values include: 'en', 
+    anguage code if you would like to force the documented to be
+    processed as that specific language. Possible values include: 'en',
     'es', 'fr', 'de', 'it', 'nl', 'pt'
-    Default value is 'en'. 
+    Default value is 'en'.
     Supports handwritten text recognition in english only
-    '''
+    """
     print("===== Batch Read File - remote =====")
 
     # Call API with URL and raw response (allows you to get the operation location)
     if language != 'en':
         recognize_handw_results = computervision_client.read(image_url, language=language, raw=True)
     else:
-        recognize_handw_results = computervision_client.read(image_url,  raw=True)
-
-
+        recognize_handw_results = computervision_client.read(image_url, raw=True)
 
     # Get the operation location (URL with an ID at the end) from the response
     operation_location_remote = recognize_handw_results.headers["Operation-Location"]
@@ -121,17 +120,5 @@ def url_image_text_recognition(computervision_client, image_url: str, language='
 
 
 def save_text(file_name: str, text: str, output_format: str):
-    with open(file_name + '.' +output_format, 'w') as file:
+    with open(file_name + '.' + output_format, 'w') as file:
         file.write(text)
-
-
-
-if __name__ == '__main__':
-    # insert path to the image here
-    path_to_image = '/Users/shevdan/Documents/Programming/Python/semester2/GroupProject/TextRecognition/examples/images/imagebehindtext.jpeg'
-
-    computervision_client = authenticate_cv_client(subscription_key, endpoint)
-    text_url = url_image_text_recognition(computervision_client, 'https://easyreaders.org/wp-content/uploads/2017/09/michelangelo600x600.png')
-    save_text('url_image_recognized_text', text_url,  'docx')
-    text = local_image_text_recognition(computervision_client, path_to_image)
-    save_text('local_image_recognized_text', text,  'docx')
