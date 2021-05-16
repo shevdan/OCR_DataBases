@@ -1,3 +1,6 @@
+
+
+
 """
 Module that implements ADT for operating with files and
 expanding data needed for ML
@@ -28,8 +31,4 @@ class AbstractAugment(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def zip_files(self):
-<<<<<<< HEAD
         raise NotImplementedError
-=======
-        pass
->>>>>>> 46a9c86096a546e1ef3928aa17a4177c2a07b194

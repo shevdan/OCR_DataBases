@@ -60,14 +60,8 @@ class CSVConvert(AbstractAugment):
         Method that processes the archive containing csv,
         processes images in there and archives foler with images
 
-<<<<<<< HEAD
-    '''
-    def __init__(self, fullpath: str, im_size=(28,28), output='train_images') -> None:
-=======
     """
-
-    def __init__(self, fullpath, im_size=(28, 28), output='train_images') -> None:
->>>>>>> 46a9c86096a546e1ef3928aa17a4177c2a07b194
+    def __init__(self, fullpath: str, im_size=(28,28), output='train_images') -> None:
         super().__init__(fullpath)
         dir_path = '/'.join(fullpath.split('/')[:-1])
         self.output = Path(f'{dir_path}/{output}')
@@ -102,30 +96,21 @@ class CSVConvert(AbstractAugment):
                 if os.path.isfile(str(filename)):
                     self.convert_csv_to_img(str(filename))
 
-<<<<<<< HEAD
 
     def convert_csv_to_img(self, filename: str):
         '''
-=======
-    def convert_csv_to_img(self, filename):
-        """
->>>>>>> 46a9c86096a546e1ef3928aa17a4177c2a07b194
         Method converts a numpy array into an image and
         saves it into the folder named by the symbol
         of the image in a output_file directory.
         ! Note ! Correct output will be proceeded for csv file that
         contains an image unicode character at the first column
         and pixels of the square image for the rest of columns
-<<<<<<< HEAD
     
         Parameters
         ----------
         filename: `str`
             path to the csv file to be converted into the folder with images
         '''
-=======
-        """
->>>>>>> 46a9c86096a546e1ef3928aa17a4177c2a07b194
         data = np.loadtxt(filename, skiprows=1, delimiter=',')
         counter = 0
         for row in data:
@@ -133,7 +118,6 @@ class CSVConvert(AbstractAugment):
             symb, pixels = row[0], row[1:]
             self.pixels_to_img(pixels, symb, counter)
 
-<<<<<<< HEAD
 
 
     def pixels_to_img(self, pixels: np.ndarray, symb: str, cnt: int):
@@ -151,14 +135,6 @@ class CSVConvert(AbstractAugment):
         cnt: `int`
             counter of the image in order for image to be named properly
         '''
-=======
-    def pixels_to_img(self, pixels, symb, cnt):
-        """
-        converts one numpy array into an image and saves it into
-        the folder named by the symbol
-        of the image in a output_file directory
-        """
->>>>>>> 46a9c86096a546e1ef3928aa17a4177c2a07b194
         if 0 <= symb < 10:
             symb = str(symb)
         else:
@@ -192,7 +168,3 @@ class CSVConvert(AbstractAugment):
         self.unzip_files()
         self.process_folder(self.unzipped)
         self.zip_files()
-
-extend = CSVConvert('/Users/shevdan/Documents/Programming/Python/semester2/groupProject2/test/mini_train.csv.zip')
-
-extend.convert()

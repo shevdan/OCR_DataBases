@@ -39,15 +39,9 @@ class OCR:
         string that defines the name of the file that will contain the recognized text
     api_key: `str`
         Key to Microsoft Azure API. Necessary to use API
-<<<<<<< HEAD
     language: Optional[`str`]
         optional parameter defining the text language to be recognized.
         Default value is 'en' for English. Possible values include: 'en', 
-=======
-    language
-        optional parametr defining the text language to be recognized.
-        Default value is 'en' for English. Possible values include: 'en',
->>>>>>> 46a9c86096a546e1ef3928aa17a4177c2a07b194
         'es', 'fr', 'de', 'it', 'nl', 'pt'. Azure OCR v. 3.2 is awaited to
         be implemented in the code to support over 70 languages in near future.
     headers: `dict`
@@ -70,11 +64,7 @@ class OCR:
     """
     ENDPOINT = 'https://westeurope.api.cognitive.microsoft.com/vision/v1.0/ocr'
 
-<<<<<<< HEAD
     def __init__(self, img_directory: str, output_file_name: str, api_key: str,language:Optional[str]='en'):
-=======
-    def __init__(self, img_directory: str, output_file_name: str, api_key: str, language='en'):
->>>>>>> 46a9c86096a546e1ef3928aa17a4177c2a07b194
         if not os.path.exists(img_directory):
             raise TypeError('Invalid path to the directory')
         self.API_KEY = api_key
