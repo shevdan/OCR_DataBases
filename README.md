@@ -12,13 +12,15 @@
 * Downloading and installing package from testpypi:
 Write in terminal
 ```
-python3 -m pip install --index-url https://test.pypi.org/project/OCR-DataBases/0.0.3/ --no-deps OCR_DataBases
+python3 -m pip install --index-url https://test.pypi.org/simple/ OCR_DataBases
 ```
-Now you can use module  by accessing it via
+Now you can use module  by accessing it via any of these examples
 ```
->>> import imageprocessing
->>> import imageprocessing.extend_data
->>> import imageprocessing.text_recognition
+>>> import OCR_DataBases
+>>> import OCR_DataBases.imageprocessing
+>>> import OCR_DataBases.imageprocessing.extend_data
+>>> import OCR_DataBases.imageprocessing.extend_data.convert_csv
+>>> import OCR_DataBases.imageprocessing.text_recognition
 ```
 And basically use the package under the license agreement
 
