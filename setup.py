@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="OCR_DataBases", # Replace with your own username
-    version="0.0.1",
+    version="0.0.3",
     author="Bohdan Shevchuk",
     author_email="shevdan007@gmail.com",
     description="Package to prepare data for ML training",

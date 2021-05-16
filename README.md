@@ -9,6 +9,20 @@
 * [Credits](https://github.com/shevdan/OCR_DataBases#credits)
 * [License](https://github.com/shevdan/OCR_DataBases#license)
 # Installation
+* Downloading and installing package from testpypi:
+Write in terminal
+```
+python3 -m pip install --index-url https://test.pypi.org/project/OCR-DataBases/0.0.3/ --no-deps OCR_DataBases
+```
+Now you can use module  by accessing it via
+```
+>>> import imageprocessing
+>>> impoert imageprocessing.extend_data
+>>> import imageprocessing.text_recognition
+```
+And basically use the package under the license agreement
+
+* Alternively, you can do following:
 $ git clone https://github.com/shevdan/OCR_DataBases.git \
 $ cd OCR_DataBases \
 $ pip install -r requirements.txt
