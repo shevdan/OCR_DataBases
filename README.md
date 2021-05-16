@@ -17,7 +17,7 @@ python3 -m pip install --index-url https://test.pypi.org/project/OCR-DataBases/0
 Now you can use module  by accessing it via
 ```
 >>> import imageprocessing
->>> impoert imageprocessing.extend_data
+>>> import imageprocessing.extend_data
 >>> import imageprocessing.text_recognition
 ```
 And basically use the package under the license agreement
