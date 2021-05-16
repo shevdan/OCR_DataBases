@@ -30,7 +30,7 @@ And basically use the package under the license agreement
    $ cd OCR_DataBases \
    $ pip install -r requirements.txt
 ```
-# Usage for Text Recognition
+# Usage for OCR_DataBases
 To use our text recognition you have to:
 1. install the distributive.
 
