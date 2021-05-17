@@ -18,11 +18,10 @@ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://
 ```
 Now you can use module  by accessing it via any of these examples.
 ```
->>> import OCR_DataBases
->>> import OCR_DataBases.imageprocessing
->>> import OCR_DataBases.imageprocessing.extend_data
->>> import OCR_DataBases.imageprocessing.extend_data.convert_csv
->>> import OCR_DataBases.imageprocessing.text_recognition
+>>> import imageprocessing
+>>> import imageprocessing.extend_data
+>>> import imageprocessing.extend_data.convert_csv
+>>> import imageprocessing.text_recognition
 ```
 And basically use the package under the license agreement.
 
@@ -38,7 +37,7 @@ To use our text recognition you have to:
 
 2. Import modules as following:
    ```
-   >>> import OCR_DataBases.imageprocessing.text_recognition
+   >>> import imageprocessing.text_recognition
    ```
    Alternatively:
    in module ocr_azure.py create an object of OCR() class with 3 (4 - optional) attributes: 
@@ -51,7 +50,7 @@ To receive the extension of your database you have to:
 1. install the distributive.
 2. Import modules as following:
    ```
-   >>> import OCR_DataBases.imageprocessing.extend_data
+   >>> import imageprocessing.extend_data
    ```
    Alternatevely:
    in module image_augment.py create an object of ImageAugment() class with 1 attribute:
