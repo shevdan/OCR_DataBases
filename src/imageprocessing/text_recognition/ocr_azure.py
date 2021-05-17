@@ -4,11 +4,14 @@ Module implementing test ADT to use Microsoft Azure API
 
 import os
 import json
-from typing import Type
+from typing import Type, Optional
 import requests
 
 
 class ImageInfo:
+    '''
+    Data structure designed to represent the image as a binary array
+    '''
     def __init__(self, img_path: str) -> None:
         if not os.path.exists(img_path):
             raise TypeError('Invalid path to the image')
@@ -24,28 +27,26 @@ class OCR:
 
     Class Attributes
     ----------------
-    API_KEY
-        string that contains secret key obligatory to use the Azure API
-    ENDPOINT
+    ENDPOINT: `str`
         Another obligatory element to use API
 
     Attributes
     ----------
-    img_directory
+    img_directory: `str`
         directory where images are stored. Note: works even if there are other files except the images
         in the directory
-    filename
+    filename: `str`
         string that defines the name of the file that will contain the recognized text
-    api_key
+    api_key: `str`
         Key to Microsoft Azure API. Necessary to use API
-    language
-        optional parametr defining the text language to be recognized.
-        Default value is 'en' for English. Possible values include: 'en',
+    language: Optional[`str`]
+        optional parameter defining the text language to be recognized.
+        Default value is 'en' for English. Possible values include: 'en', 
         'es', 'fr', 'de', 'it', 'nl', 'pt'. Azure OCR v. 3.2 is awaited to
         be implemented in the code to support over 70 languages in near future.
-    headers
+    headers: `dict`
         dictionary that defines headers to get send requests from Azure API
-    params
+    params: `dict`
         dictionary containing parameters of the request to the API
 
     Methods
@@ -63,7 +64,7 @@ class OCR:
     """
     ENDPOINT = 'https://westeurope.api.cognitive.microsoft.com/vision/v1.0/ocr'
 
-    def __init__(self, img_directory: str, output_file_name: str, api_key: str, language='en'):
+    def __init__(self, img_directory: str, output_file_name: str, api_key: str,language:Optional[str]='en'):
         if not os.path.exists(img_directory):
             raise TypeError('Invalid path to the directory')
         self.API_KEY = api_key
@@ -79,9 +80,19 @@ class OCR:
             'detectOrientation ': 'true'
         }
 
-    def get_text(self, pathToImage):
+    def get_text(self, pathToImage: str) -> dict:
         '''
         Accesses API to get json file containing recognized text
+    
+        Parameters
+        ----------
+        pathToImage: `str`
+            path to the image
+    
+        Returns
+        -------
+        `dict``
+            information from json file converted into the python dictionary
         '''
         payload = ImageInfo(pathToImage)
         response = requests.post(self.ENDPOINT, headers=self.headers, params=self.params, data=payload.image)
@@ -89,9 +100,20 @@ class OCR:
 
         return results
 
-    def parse_text(self, results):
+    def parse_text(self, results: dict) -> str:
         '''
         Parses the information from json file
+    
+        Parameters
+        ----------
+        results: dict
+            json information containing info about image
+            converted into python dictionary
+    
+        Returns
+        -------
+        `str`
+            text from the image parsed from json file 
         '''
         text = ''
         for region in results['regions']:

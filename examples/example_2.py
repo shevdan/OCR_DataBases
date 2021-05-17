@@ -8,7 +8,7 @@ import json
 import requests
 from pprint import pprint
 
-API_KEY = '0ec5c956c2f74b279cf52c0706dbe7cf'
+API_KEY = '3592a71759b9440c8824481a381347b9'
 ENDPOINT = 'https://westeurope.api.cognitive.microsoft.com/vision/v1.0/ocr'
 
 
@@ -25,6 +25,7 @@ def handler(DIR):
             text += parse_text(results)
 
     open('output.txt', 'w').write(text)
+    return text
 
 
 def parse_text(results):
@@ -59,3 +60,8 @@ def get_text(pathToImage):
     # prints the json from the API
     pprint(results)
     return results
+
+
+if __name__ == '__main__':
+    #to run example, you have to be in examples directory
+    handler('images')

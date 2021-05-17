@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>imageprocessing.text_recognition package &#8212; OCR_DataBases 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="imageprocessing.extend_data package" href="imageprocessing.extend_data.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="imageprocessing.extend_data.html" title="imageprocessing.extend_data package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">OCR_DataBases 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="imageprocessing.html" accesskey="U">imageprocessing package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">imageprocessing.text_recognition package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="imageprocessing-text-recognition-package">
+<h1>imageprocessing.text_recognition package<a class="headerlink" href="#imageprocessing-text-recognition-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-imageprocessing.text_recognition.ocr_azure">
+<span id="imageprocessing-text-recognition-ocr-azure-module"></span><h2>imageprocessing.text_recognition.ocr_azure module<a class="headerlink" href="#module-imageprocessing.text_recognition.ocr_azure" title="Permalink to this headline">¶</a></h2>
+<p>Module implementing test ADT to use Microsoft Azure API</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="imageprocessing.text_recognition.ocr_azure.ImageInfo">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imageprocessing.text_recognition.ocr_azure.</span></span><span class="sig-name descname"><span class="pre">ImageInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.text_recognition.ocr_azure.ImageInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Data structure designed to represent the image as a binary array</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="imageprocessing.text_recognition.ocr_azure.OCR">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">imageprocessing.text_recognition.ocr_azure.</span></span><span class="sig-name descname"><span class="pre">OCR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img_directory</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'en'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.text_recognition.ocr_azure.OCR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ADT that enables text recognition of any amount of images stored in one directory.
+Takes path to the directory with stored images, name of the file to store the
+recognized text and optionally language of the recognition when created the instance of the ADT
+…</p>
+<dl class="simple">
+<dt>ENDPOINT: <cite>str</cite></dt><dd><p>Another obligatory element to use API</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imageprocessing.text_recognition.ocr_azure.OCR.img_directory">
+<span class="sig-name descname"><span class="pre">img_directory</span></span><a class="headerlink" href="#imageprocessing.text_recognition.ocr_azure.OCR.img_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>directory where images are stored. Note: works even if there are other files except the images
+in the directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>str</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imageprocessing.text_recognition.ocr_azure.OCR.filename">
+<span class="sig-name descname"><span class="pre">filename</span></span><a class="headerlink" href="#imageprocessing.text_recognition.ocr_azure.OCR.filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>string that defines the name of the file that will contain the recognized text</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>str</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imageprocessing.text_recognition.ocr_azure.OCR.api_key">
+<span class="sig-name descname"><span class="pre">api_key</span></span><a class="headerlink" href="#imageprocessing.text_recognition.ocr_azure.OCR.api_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Key to Microsoft Azure API. Necessary to use API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>str</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imageprocessing.text_recognition.ocr_azure.OCR.language">
+<span class="sig-name descname"><span class="pre">language</span></span><a class="headerlink" href="#imageprocessing.text_recognition.ocr_azure.OCR.language" title="Permalink to this definition">¶</a></dt>
+<dd><p>optional parameter defining the text language to be recognized.
+Default value is ‘en’ for English. Possible values include: ‘en’,
+‘es’, ‘fr’, ‘de’, ‘it’, ‘nl’, ‘pt’. Azure OCR v. 3.2 is awaited to
+be implemented in the code to support over 70 languages in near future.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Optional[<cite>str</cite>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imageprocessing.text_recognition.ocr_azure.OCR.headers">
+<span class="sig-name descname"><span class="pre">headers</span></span><a class="headerlink" href="#imageprocessing.text_recognition.ocr_azure.OCR.headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>dictionary that defines headers to get send requests from Azure API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>dict</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imageprocessing.text_recognition.ocr_azure.OCR.params">
+<span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#imageprocessing.text_recognition.ocr_azure.OCR.params" title="Permalink to this definition">¶</a></dt>
+<dd><p>dictionary containing parameters of the request to the API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><cite>dict</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.text_recognition.ocr_azure.OCR.get_text">
+<span class="sig-name descname"><span class="pre">get_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pathToImage</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.text_recognition.ocr_azure.OCR.get_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>sends request to the API and returns information from
+json converted into the python dictionary.
+Takes a full path to the image, which is got as concatenation
+of the directory + the name of the file inside the directory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.text_recognition.ocr_azure.OCR.parse_text">
+<span class="sig-name descname"><span class="pre">parse_text</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.text_recognition.ocr_azure.OCR.parse_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>parses the json and gets the text from the image.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imageprocessing.text_recognition.ocr_azure.OCR.handler">
+<span class="sig-name descname"><span class="pre">handler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imageprocessing.text_recognition.ocr_azure.OCR.handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>iterates over each file within a directory, sends requests to the API
+to recognize text, gets the recognized text and saves it into the file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imageprocessing.text_recognition.ocr_azure.OCR.ENDPOINT">
+<span class="sig-name descname"><span class="pre">ENDPOINT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'https://westeurope.api.cognitive.microsoft.com/vision/v1.0/ocr'</span></em><a class="headerlink" href="#imageprocessing.text_recognition.ocr_azure.OCR.ENDPOINT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">get_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pathToImage</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accesses API to get json file containing recognized text</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pathToImage</strong> (<cite>str</cite>) – path to the image</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>information from json file converted into the python dictionary</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><cite>dict`</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">handler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd><p>handles all the images from the directory with images and saves
+recognized text in output.txt</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">parse_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the information from json file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>results</strong> (<em>dict</em>) – json information containing info about image
+converted into python dictionary</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>text from the image parsed from json file</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><cite>str</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-imageprocessing.text_recognition">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-imageprocessing.text_recognition" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">imageprocessing.text_recognition package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-imageprocessing.text_recognition.ocr_azure">imageprocessing.text_recognition.ocr_azure module</a></li>
+<li><a class="reference internal" href="#module-imageprocessing.text_recognition">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="imageprocessing.extend_data.html"
+                        title="previous chapter">imageprocessing.extend_data package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/imageprocessing.text_recognition.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="imageprocessing.extend_data.html" title="imageprocessing.extend_data package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">OCR_DataBases 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="imageprocessing.html" >imageprocessing package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">imageprocessing.text_recognition package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Bohdan Shevchuk.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
+    </div>
+  </body>
+</html>

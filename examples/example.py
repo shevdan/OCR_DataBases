@@ -1,6 +1,6 @@
 """
 Module that is an example of Microsoft Azure Cognitive Services Api
-to recognize textсу
+to recognize text
 """
 
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
