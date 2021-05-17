@@ -16,7 +16,6 @@ python3 -m pip install --index-url https://test.pypi.org/simple/ OCR_DataBases
 ```
 Now you can use module  by accessing it via any of these examples
 ```
->>> import OCR_DataBases
 >>> import imageprocessing
 >>> import imageprocessing.extend_data
 >>> import imageprocessing.extend_data.convert_csv

@@ -3,7 +3,7 @@
 
 """
 Module that implements ADT for operating with files and
-expanding data needed for ML
+expanding data needed for ML.
 """
 
 import sys, os
@@ -13,7 +13,7 @@ import abc
 class AbstractAugment(metaclass=abc.ABCMeta):
     """
     ADT for operating with files and expanding data
-    needed for ML
+    needed for ML.
     """
 
     def __init__(self, dir_path: str):
