@@ -1,4 +1,5 @@
 # OCR DataBases
+
 # Description
 [Homework Tasks](https://github.com/shevdan/OCR_DataBases/wiki)
 
@@ -15,7 +16,7 @@ Write in terminal
 ```
 python3 -m pip install --index-url https://test.pypi.org/simple/ OCR_DataBases
 ```
-Now you can use module  by accessing it via any of these examples
+Now you can use module  by accessing it via any of these examples.
 ```
 >>> import OCR_DataBases
 >>> import OCR_DataBases.imageprocessing
@@ -23,7 +24,7 @@ Now you can use module  by accessing it via any of these examples
 >>> import OCR_DataBases.imageprocessing.extend_data.convert_csv
 >>> import OCR_DataBases.imageprocessing.text_recognition
 ```
-And basically use the package under the license agreement
+And basically use the package under the license agreement.
 
 * Alternively, you can do following:
 ```
