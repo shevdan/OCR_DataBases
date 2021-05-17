@@ -65,7 +65,7 @@ class ImageAugment(AbstractAugment):
     def augment_image(self, filename: str,  number_mult: int):
         '''
         applies ImageDataGenerator and generate given number of randomly
-        created images from the base one, which has the filename path
+        created images from the base one, which has the filename path.
     
         Parameters
         ----------
@@ -97,7 +97,7 @@ class ImageAugment(AbstractAugment):
 
     def process_folder(self,number_mult: int, dir_path):
         '''recursively walks through all the directories located by the dir_path
-        and applies augment_image to every image
+        and applies augment_image to every image.
 
         Parameters
         ----------
@@ -117,7 +117,7 @@ class ImageAugment(AbstractAugment):
 
     def zip_files(self):
         '''
-        zips the file and removes the temporary directory
+        zips the file and removes the temporary directory.
         '''
         dir_path = self.fullpath[:-4]
 
