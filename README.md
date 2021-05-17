@@ -1,10 +1,14 @@
 # OCR DataBases
 # Description
 [Homework Tasks](https://github.com/shevdan/OCR_DataBases/wiki)
-Our project has two main functions:
+
+Our project has two main features:
 1. Reading text from an image
+
 This feature simplifies the process of retrieving text from a picture, or rather makes it automatic to save user's time and reduce the probability of mistakes during text rewriting. The program receives the image from the user, and as a result displays the text and saves it to the file.
+
 2. Increasing the database for further machine learning
+
 The feature is created for developers, who need to expand the database with handwritten text, so that in the future, using machine learning, the program can also decrypt handwritten texts in many languages.
 
 # Table of Contents
