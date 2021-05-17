@@ -12,7 +12,7 @@
 * Downloading and installing package from testpypi:
 Write in terminal
 ```
-python3 -m pip install --index-url https://test.pypi.org/simple/ OCR_DataBases
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple OCR_DataBases
 ```
 Now you can use module  by accessing it via any of these examples
 ```
