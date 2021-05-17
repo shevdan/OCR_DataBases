@@ -3,7 +3,7 @@
 [Homework Tasks](https://github.com/shevdan/OCR_DataBases/wiki)
 # Table of Contents
 * [Installation](https://github.com/shevdan/OCR_DataBases#installation)
-* [Usage for Text Recognition](https://github.com/shevdan/OCR_DataBases#usage-for-text-recognition)
+* [Usage for Text Recognition](https://github.com/shevdan/OCR_DataBases#usage-for-ocr_databases)
 * [Usage for Data Bases Extension](https://github.com/shevdan/OCR_DataBases#usage-for-data-bases-extension)
 * [Contributing](https://github.com/shevdan/OCR_DataBases#contributing)
 * [Credits](https://github.com/shevdan/OCR_DataBases#credits)
